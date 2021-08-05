@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QTextCursor
+
 from utils import write1, write0, ws, send_led0, send_led1
 
 
@@ -21,6 +23,7 @@ class Ui_Dialog(object):
         self.textEdit.setGeometry(QtCore.QRect(20, 120, 431, 211))
         self.textEdit.setObjectName("textEdit")
         self.textEdit.setText("xinyuuliu's 智能家居：")
+        self.textEdit.moveCursor(QTextCursor.End)
 
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(80, 70, 61, 31))
