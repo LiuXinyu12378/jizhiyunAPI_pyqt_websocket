@@ -2,13 +2,13 @@ import threading
 import time
 import json
 import sys
-import design2
+import untitled
 from PyQt5.QtWidgets import QApplication,QMainWindow
 from utils import data,did,read,ping,ws
 
 app = QApplication(sys.argv)
 QMainWindow = QMainWindow()
-ui = design2.Ui_dialog()
+ui = untitled.Ui_dialog()
 ui.setupUi(QMainWindow)
 QMainWindow.show()
 
