@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="新前缀">
+  <qresource prefix="nuttertools">
     <file>o_nuttertools.png</file>
   </qresource>
 </RCC>

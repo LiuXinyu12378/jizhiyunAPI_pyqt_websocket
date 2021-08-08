@@ -148,24 +148,6 @@ class Ui_dialog(object):
         self.label_5.setText(_translate("dialog", "湿度："))
 
 
-    def btnstate(self, btn):
-        # 输出按钮1与按钮2的状态，选中还是没选中
-        if btn.text() == '开灯':
-            if btn.isChecked() == True:
-                send_data({"LED":True})
 
-        if btn.text() == "关灯":
-            if btn.isChecked() == True:
-                send_data({"LED":False})
-
-    def btnstate2(self, btn):
-        # 输出按钮1与按钮2的状态，选中还是没选中
-        if btn.text() == '开灯':
-            if btn.isChecked() == True:
-                send_data({"LED2":True})
-
-        if btn.text() == "关灯":
-            if btn.isChecked() == True:
-                send_data({"LED2":False})
 
 # import nuttertools_rc

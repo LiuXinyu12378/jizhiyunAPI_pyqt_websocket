@@ -4,13 +4,22 @@ import json
 import sys
 import untitled
 from PyQt5.QtWidgets import QApplication,QMainWindow
-from utils import data,did,read,ping,ws
+from PyQt5.QtGui import QIcon
+from utils import data, did, read, ping, ws, btnstate, btnstate2
 
 app = QApplication(sys.argv)
+# print(QIcon('icon.png'))
+app.setWindowIcon(QIcon('icon.png'))
 QMainWindow = QMainWindow()
 ui = untitled.Ui_dialog()
 ui.setupUi(QMainWindow)
 QMainWindow.show()
+
+ui.radioButton.toggled.connect(lambda: btnstate(ui.radioButton))
+ui.radioButton_2.toggled.connect(lambda: btnstate(ui.radioButton_2))
+ui.radioButton_3.toggled.connect(lambda: btnstate2(ui.radioButton_3))
+ui.radioButton_4.toggled.connect(lambda: btnstate2(ui.radioButton_4))
+
 
 
 def read_data():
@@ -30,11 +39,18 @@ def read_data():
                     "空调": attrs.get('pwm1'),
                     "风扇": attrs.get('pwm2'),
                 }
-                ui.label_6.setText(str(data['温度']))
-                ui.label_7.setText(str(data['湿度']))
+                ui.label_6.setText(str(round(data['温度'],2))+" ℃")
+                ui.label_7.setText(str(round(data['湿度'],2))+ " %")
+                ui.label_11.setText(str(round(data['土壤湿度'],2))+ " %")
+
+                if data["人体感应"] == True:
+                    ui.label_9.setText("Somebody In!!!")
+                else:
+                    ui.label_9.setText("Nobody")
                 ui.textEdit.append(str(data))
                 time.sleep(0.5)
         except EnvironmentError as e:
+            ui.textEdit.append("远程客户端网络断开！等待连接。。。")
             print(e)
 
 def heart():
